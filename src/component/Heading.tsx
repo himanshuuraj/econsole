@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 export const Heading = () => {
+
     return (
         <div>
             <div className="flex items-center mt-24 mb-10">

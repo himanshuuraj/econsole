@@ -11,14 +11,16 @@ export interface Widgets {
 }
 
 export interface InitialWidgetState {
-  widgets: Array<Widgets> 
+  widgets: Array<Widgets>,
+  addWidget: AddorEditWidget
 }
 
-const initialState: InitialWidgetState = {
+const initialWidgetState: InitialWidgetState = {
   widgets: [{
     id: "1",
     name: "Namexxxxxxxxxxx"
   }],
+  addWidget: (widgets: Widgets): void => { }
 };
 
 interface ProviderProps {
@@ -28,9 +30,9 @@ interface ProviderProps {
   removeWidget: RemoveWidget
 }
 
-export const WidgetContext = createContext<InitialWidgetState>(initialState);
+export const WidgetContext = createContext<InitialWidgetState>(initialWidgetState);
 export const WidgetProvider = ({ children } : any) => {
-  const [state, dispatch] = useReducer(WidgetReducer, initialState);
+  const [state, dispatch] = useReducer(WidgetReducer, initialWidgetState);
 
   function removeWidget(id: string) {
     dispatch({
