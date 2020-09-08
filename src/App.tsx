@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import { Home } from "./component/Home";
+import { Home } from "./container/home/Home";
 import { Addemployee } from "./component/AddEmployee";
 import { Editemployee } from "./component/EditEmployee";
 import { WidgetProvider } from './context/ConfigureWidgetState';
