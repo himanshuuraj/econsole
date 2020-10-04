@@ -1,28 +1,27 @@
-import React, { useContext, useEffect } from 'react';
-import { WidgetProvider, Widgets } from '../../context/ConfigureWidgetState';
-import { WidgetContext, InitialWidgetState } from '../../context/ConfigureWidgetState';
-import { GlobalContext, InitialState } from '../../context/GlobalState';
-import backgroundImage from './../../images/bg.webp';
+import React from 'react';
+import { Sidebar } from "./../sidebar/sidebar";
+import { MainContent } from '../maincontent/maincontent';
+import { Header } from "./../../component/Header";
+import { Row, Col, Layout } from 'antd';
 import "./home.css";
 
 export const Home = () => {
-    const { widgets, addWidget } = useContext<InitialWidgetState>(WidgetContext);
-    const { employees } = useContext<InitialState>(GlobalContext);
-
-    let widget: Widgets = {
-        id: "22",
-        name : "Updated Name"
-    }
-
-    useEffect(() => {
-        addWidget(widget);
-    }, []);
     
     return (
-        <WidgetProvider>
-            <div className="app">
-                {/* <img src={backgroundImage}/> */}
-            </div>
-        </WidgetProvider>
+        <Layout>
+            <Layout.Header>
+                <Header />
+            </Layout.Header>
+            <Layout>
+                <Layout.Sider>
+                    <Sidebar />
+                </Layout.Sider>
+                <Layout.Content>
+                    <MainContent />
+                </Layout.Content>
+                <Layout.Sider>right sidebar</Layout.Sider>
+            </Layout>
+            <Layout.Footer>footer</Layout.Footer>
+        </Layout>
     )
 }

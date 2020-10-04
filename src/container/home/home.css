@@ -1,7 +1,12 @@
-.app {
-    height : 100vh;
-    background-image: url("./../../images/bg.webp");
-    background-position: center;
-    background-size: auto;
-    background-repeat: no-repeat;
+.tc {
+    color : white;
+}
+
+.site-layout {
+    background-color: white;
+}
+
+.header {
+    background-color: white;
+    height : 100%;
 }

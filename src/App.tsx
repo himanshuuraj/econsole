@@ -1,13 +1,12 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import {useRoutes} from 'hookrouter';
 import './App.css';
 import { Home } from "./container/home/Home";
-import { Addemployee } from "./component/AddEmployee";
-import { Editemployee } from "./component/EditEmployee";
 import { WidgetProvider } from './context/ConfigureWidgetState';
-
 import { GlobalProvider } from './context/GlobalState';
-
+import { Login } from "./container/login/login";
+import 'antd/dist/antd.css';
+// import { useRedirect} from 'hookrouter';
 
 let HomeApp = () => {
   return (
@@ -17,16 +16,18 @@ let HomeApp = () => {
     )
 }
 
+const routes = {
+  "/": () => <HomeApp />,
+  "/login": () => <Login />,
+};
+
 export default () => {
+
+  // useRedirect('/', '/login');
+
   return (
     <GlobalProvider>
-      <Router>
-        <Switch>
-          <Route path="/" component={HomeApp} exact />
-          <Route path="/add" component={Addemployee} exact />
-          <Route path="/edit/:id" component={Editemployee} exact />
-        </Switch>
-      </Router>
+      {useRoutes(routes)}
     </GlobalProvider>
   );
 }
